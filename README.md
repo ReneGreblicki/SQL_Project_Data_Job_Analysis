@@ -100,6 +100,33 @@ Salary ($)
 
 ## 2️⃣ Skills Required for Top Paying Jobs
 
+### SQL Used
+
+```sql
+WITH top_paying_jobs AS (
+SELECT     
+    job_id,
+    job_title_short,
+    salary_year_avg,
+    name as company_name
+FROM
+    job_postings_fact
+LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
+WHERE
+    job_title_short='Data Analyst' 
+    AND job_location = 'Anywhere'
+    AND salary_year_avg IS NOT NULL
+ORDER BY salary_year_avg DESC
+LIMIT 10)
+SELECT
+    top_paying_jobs.*,
+    skills_dim.skills
+FROM top_paying_jobs
+INNER JOIN skills_job_dim ON top_paying_jobs.job_id=skills_job_dim.job_id
+LEFT JOIN skills_dim ON skills_job_dim.skill_id=skills_dim.skill_id
+ORDER BY salary_year_avg DESC
+```
+
 ### Findings
 
 Among the Top 10 highest-paying Data Analyst jobs:
@@ -119,22 +146,6 @@ Among the Top 10 highest-paying Data Analyst jobs:
 SQL appeared in **100% of the highest-paying jobs**, making it the single most important skill in my analysis.
 
 Python and Tableau followed closely, highlighting the growing importance of analytics automation and data storytelling.
-
----
-
-## Suggested Visualization
-
-### Most Requested Skills in Top-Paying Jobs
-
-```text
-SQL       ████████ 8
-Python    ███████  7
-Tableau   ██████   6
-R         ████     4
-Snowflake ███      3
-Pandas    ███      3
-Excel     ███      3
-```
 
 ---
 
