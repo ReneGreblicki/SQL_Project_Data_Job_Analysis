@@ -229,7 +229,7 @@ A surprising discovery was that the highest-paying skills weren't traditional an
 Instead, salaries increased significantly when analytics overlapped with:
 
 ![Data Visualisation](project_sql/Assets/Data%20Visualisation.png)  
-*This visualization was generated using ChatGPT based on findings from my analysis.*
+*This visualisation was generated using ChatGPT based on findings from my analysis.*
 
 ---
 
